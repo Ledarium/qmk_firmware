@@ -1,7 +1,7 @@
 #pragma once
 
 /* Delay for tap/hold for tap dance commands */
-#define TAPPING_TERM 150
+#define TAPPING_TERM 170
 
 /* Disable RGB when host goes to sleep */
 #define RGBLIGHT_SLEEP
@@ -10,7 +10,7 @@
 #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 
 /* Lets check it out */
-#define AUTO_SHIFT_TIMEOUT 150
+#define AUTO_SHIFT_TIMEOUT 170
 #define NO_AUTO_SHIFT_NUMERIC
 
 /* Maps to `~ */
