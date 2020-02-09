@@ -6,8 +6,8 @@
 /* Disable RGB when host goes to sleep */
 #define RGBLIGHT_SLEEP
 
-/* Disable LGBT lights */
 #undef RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 
 /* Lets check it out */
 #define AUTO_SHIFT_TIMEOUT 150
