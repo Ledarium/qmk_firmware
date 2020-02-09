@@ -1,7 +1,7 @@
 #pragma once
 
 /* Delay for tap/hold for tap dance commands */
-#define TAPPING_TERM 180
+#define TAPPING_TERM 150
 
 /* Disable RGB when host goes to sleep */
 #define RGBLIGHT_SLEEP
