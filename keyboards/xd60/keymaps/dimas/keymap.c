@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [FKEYS] = LAYOUT_all(
             ____,    KC_F1,   KC_F2,   KC_F3,       KC_F4,      KC_F5,   KC_F6,      KC_F7,      KC_F8,    KC_F9,   KC_F10,     KC_F11, KC_F12,  ____,    ____,
             ____,    ____,    ____,    ____,        ____,       ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    ____,
-            ____,    ____,    ____,    ____,        ____,       ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    ____,
+            ____,    KC_ASDN, KC_ASUP, KC_ASRP,     ____,       ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    ____,
             RESET, _,  ____,    ____,  ____,        RGB_MOD,    RGB_TOG, RGB_VAD,    RGB_VAI,  BL_TOGG, BL_DEC,     BL_INC, KC_MUTE, KC_VOLU, KC_MPLY,
             ____,    ____,    ____,                    TG(GAME),                                ____,       KC_TRNS, KC_MPRV,    KC_VOLD,    KC_MNXT),
     [NUMPAD] = LAYOUT_all(
@@ -59,6 +59,7 @@ void matrix_init_user() {
 
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
+    autoshift_enable();
     switch (layer) {
         case MOD:
             rgblight_setrgb(RGB_ORANGE);
@@ -73,6 +74,7 @@ uint32_t layer_state_set_user(uint32_t state) {
             break;
 
         case GAME:
+            autoshift_disable();
             rgblight_setrgb(RGB_RED);
             break;
 
