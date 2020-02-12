@@ -8,14 +8,15 @@
 enum {
     DEFAULT = 0,
     GAME,
-    MOD,
+    MOD1,
+    MOD2,
     FKEYS,
     NUMPAD
 };
 
 enum {
-    ESC_MOD = LT(MOD,KC_ESC),
-    SPC_MOD = LT(MOD,KC_SPC),
+    ESC_MOD = LT(MOD2,KC_ESC),
+    SPC_MOD = LT(MOD1,KC_SPC),
     LCTL_BS = MT(MOD_LCTL, KC_BSPC)
 };
 
@@ -34,12 +35,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_LSFT, _,   KC_Z,   KC_X,   KC_C, KC_V,   KC_B,   KC_N,   KC_M,  KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT, KC_UP,   KC_DEL,
             KC_LCTL, KC_LGUI, KC_LALT,                   KC_SPC,                     TG(NUMPAD),OSL(FKEYS),KC_LEFT, KC_DOWN, KC_RGHT
             ),
-    [MOD] = LAYOUT_all(
-            ____,    ____,    ____,    LALT(KC_F4), KC_END,     ____, ____,    ____,       ____,    ____,    KC_HOME,  ____,  ____,  ____, KC_PAUS,
-            KC_ESC,  KC_1,    KC_2,    KC_3,        KC_4,       KC_5, KC_6,    KC_7,       KC_8,    KC_9,    KC_0,     ____,  ____,           ____,
-            KC_TRNS, KC_PAST, KC_PPLS, LCTL(KC_X),  LCTL(KC_F), ____, KC_LEFT, KC_DOWN,    KC_UP,   KC_RGHT, ____,     ____,               _, ____,
-            KC_TRNS, _, ____, ____,    ____,        ____,       ____, KC_LBRC, KC_RBRC,    KC_MINS, KC_EQL,  ____,          ____,    KC_PGUP, ____,
-            KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS,                                            ____,  ____,   KC_HOME, KC_PGDN, KC_END
+    [MOD1] = LAYOUT_all(
+            ____,     ____,  ____,  ____,  ____,  ____,   ____,     ____,    ____,    ____,    ____,   ____,  ____, ____,   ____,
+            ____,     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   ____, ____, ____,
+            KC_BSPC,  KC_LBRC, KC_RBRC, KC_AT,  KC_HASH, KC_EXLM, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,  KC_AMPR, ____, _,    ____,
+            KC_TRNS,_, KC_LCBR, KC_RCBR, KC_DLR, KC_PERC, KC_EQL,  KC_UNDS, KC_PLUS, KC_MINS, KC_ASTR, ____, ____, KC_PGUP, ____,
+            KC_TRNS, KC_TRNS, KC_TRNS,                 KC_TRNS,                               ____, ____, KC_HOME, KC_PGDN, KC_END
+            ),
+    [MOD2] = LAYOUT_all(
+            ____,    ____,    ____,    LALT(KC_F4), KC_END,     ____, ____,    ____,    ____,  ____,    KC_HOME, ____, ____, ____,    KC_PAUS,
+            KC_ESC,  ____,    ____,    ____,        ____,       ____, ____,    ____,    ____,  ____,    ____,    ____, ____, ____,
+            KC_TRNS, KC_PAST, KC_PPLS, LCTL(KC_X),  LCTL(KC_F), ____, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, ____,    ____, _,    ____,
+            KC_TRNS, _,    ____, ____,     ____,    ____,    ____,    ____,    ____,  ____,    ____,    ____, ____, KC_PGUP, ____,
+            KC_TRNS, KC_TRNS, KC_TRNS,              KC_SPC,                                    ____, ____, KC_HOME, KC_PGDN, KC_END
             ),
     [FKEYS] = LAYOUT_all(
             ____,  KC_F1,   KC_F2,  KC_F3,    KC_F4,  KC_F5,   KC_F6,   KC_F7,   KC_F8,    KC_F9,   KC_F10, KC_F11, KC_F12,  ____,    ____,
@@ -49,9 +57,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ____,  ____,    ____,   TG(GAME), ____,   KC_TRNS, KC_MPRV, KC_VOLD, KC_MNXT
             ),
     [NUMPAD] = LAYOUT_all(
-            KC_NLCK, KC_PSLS, KC_PAST, KC_PEQL,     ____,       ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    KC_BSPC, ____,
+            KC_NLCK, KC_PSLS, KC_ASTR, KC_PEQL,     ____,       ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    KC_BSPC, ____,
             KC_PMNS, KC_P7,   KC_P8,   KC_P9,       KC_BSPC,    ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    ____,
-            KC_PPLS, KC_P4,   KC_P5,   KC_P6,       KC_BSPC,    ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    ____,
+            KC_PLUS, KC_P4,   KC_P5,   KC_P6,       KC_BSPC,    ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    ____,
             KC_PENT, _, KC_P1,   KC_P2,  KC_P3,     KC_PDOT,    ____,    ____,       ____,     ____,    ____,       ____,   ____,    ____,    ____,
             ____,    ____,    KC_PDOT, KC_P0,       KC_TRNS,    ____,    ____,       ____,       ____
             )
@@ -70,11 +78,16 @@ void suspend_wakeup_init_user(void) {
 
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
-    autoshift_enable();
+    autoshift_disable();
 
     switch (layer) {
-        case MOD:
+        case MOD1:
             rgblight_setrgb(RGB_ORANGE);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+            break;
+
+        case MOD2:
+            rgblight_setrgb(RGB_PINK);
             rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
 
@@ -89,12 +102,12 @@ uint32_t layer_state_set_user(uint32_t state) {
             break;
 
         case GAME:
-            autoshift_disable();
             rgblight_setrgb(RGB_RED);
             rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
             break;
 
         default:
+            autoshift_enable();
             rgblight_mode_noeeprom(DEFAULT_RGB_MODE);
             break;
     }
