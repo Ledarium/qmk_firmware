@@ -5,6 +5,58 @@
 
 #define DEFAULT_RGB_MODE RGBLIGHT_MODE_RAINBOW_SWIRL+1
 
+// Macro Declarations
+enum {
+    MACRO_0 = SAFE_RANGE+100,
+    MACRO_1,
+    MACRO_2,
+    MACRO_3,
+    MACRO_4,
+    MACRO_5,
+};
+// Macro Definitions
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch(keycode) {
+    case MACRO_0: {
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("a") " a naming; b main info; v surfaces; d form; e links");
+        }
+        break;
+    }
+    case MACRO_1: {
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("a") " hand input; select from db; raschet; skalyvanie");
+        }
+        break;
+    }
+    case MACRO_2: {
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("a") " frame abstract view of smth;");
+        }
+        break;
+    }
+    case MACRO_3: {
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("a") " synth staright doc; param; synth");
+        }
+        break;
+    }
+    case MACRO_4: {
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("a") " 1 def name material 2 part details 3 surf 4 surf details 5 leng");
+        }
+        break;
+    }
+    case MACRO_5: {
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("a") " sprut sasat");
+        }
+        break;
+    }
+  }
+  return true;
+};
+
 enum {
     DEFAULT = 0,
     GAME,
@@ -51,9 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
     [FKEYS] = LAYOUT_all(
             ____,  KC_F1,   KC_F2,  KC_F3,    KC_F4,  KC_F5,   KC_F6,   KC_F7,   KC_F8,    KC_F9,   KC_F10, KC_F11, KC_F12,  ____,    ____,
-            ____,  KC_F13,  KC_F14, KC_F15,   KC_F16, KC_F17,  KC_F18,  KC_F19,  KC_F20,   KC_F21,  KC_F22, KC_F23, KC_F24,  ____,
-            ____,  KC_ASTG, ____,   ____,     ____,   ____,    ____,    ____,    ____,     ____,    ____,   ____,   ____,    ____,
-            RESET, _,       ____,   ____,     ____,   RGB_MOD, RGB_TOG, RGB_VAD, RGB_VAI,  BL_TOGG, BL_DEC, BL_INC, KC_MUTE, KC_VOLU, KC_MPLY,
+            KC_ASTG,KC_F13, KC_F14, KC_F15,   KC_F16, KC_F17,  KC_F18,  KC_F19,  KC_F20,   KC_F21,  KC_F22, KC_F23, KC_F24,  ____,
+            ____,  MACRO_0, MACRO_1,MACRO_2, MACRO_3, MACRO_4, MACRO_5, ____,    ____,     ____,    ____,   ____,   ____,    ____,
+            RESET,_, ____,   ____,     ____,   RGB_MOD, RGB_TOG, RGB_VAD, RGB_VAI,  BL_TOGG, BL_DEC, BL_INC, KC_MUTE, KC_VOLU, KC_MPLY,
             ____,  ____,    ____,   TG(GAME), ____,   KC_TRNS, KC_MPRV, KC_VOLD, KC_MNXT
             ),
     [NUMPAD] = LAYOUT_all(
