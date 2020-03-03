@@ -123,11 +123,6 @@ void keyboard_post_init_user() {
     rgblight_mode_noeeprom(DEFAULT_RGB_MODE);
 }
 
-void suspend_wakeup_init_user(void) {
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(DEFAULT_RGB_MODE);
-}
-
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
     autoshift_disable();
