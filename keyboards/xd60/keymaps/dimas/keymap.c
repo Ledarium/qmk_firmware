@@ -7,49 +7,14 @@
 
 // Macro Declarations
 enum {
-    MACRO_0 = SAFE_RANGE+100,
-    MACRO_1,
-    MACRO_2,
-    MACRO_3,
-    MACRO_4,
-    MACRO_5,
+    MACRO_1_8 = SAFE_RANGE+100,
 };
 // Macro Definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
-    case MACRO_0: {
+    case MACRO_1_8: {
         if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("a") " a naming; b main info; v surfaces; d form; e links");
-        }
-        break;
-    }
-    case MACRO_1: {
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("a") " hand input; select from db; raschet; skalyvanie");
-        }
-        break;
-    }
-    case MACRO_2: {
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("a") " frame abstract view of smth;");
-        }
-        break;
-    }
-    case MACRO_3: {
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("a") " synth staright doc; param; synth");
-        }
-        break;
-    }
-    case MACRO_4: {
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("a") " 1 def name material 2 part details 3 surf 4 surf details 5 leng");
-        }
-        break;
-    }
-    case MACRO_5: {
-        if (record->event.pressed) {
-            SEND_STRING(SS_LCTL("a") " sprut sasat");
+            SEND_STRING("12345678");
         }
         break;
     }
@@ -89,9 +54,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
     [MOD1] = LAYOUT_all(
             ____,     ____,  ____,  ____,  ____,  ____,   ____,     ____,    ____,    ____,    ____,   ____,  ____, ____,   ____,
-            ____,     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   ____, ____, ____,
-            KC_BSPC,  KC_LBRC, KC_RBRC, KC_AT,  KC_HASH, KC_EXLM, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,  KC_AMPR, ____, _,    ____,
-            KC_TRNS,_, KC_LCBR, KC_RCBR, KC_DLR, KC_PERC, KC_EQL,  KC_UNDS, KC_PLUS, KC_MINS, KC_ASTR, ____, ____, KC_PGUP, ____,
+            ____,     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   MACRO_1_8, ____, ____,
+            KC_BSPC,  KC_LBRC, KC_RBRC, KC_AT,  KC_HASH, KC_AMPR, KC_EXLM, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,  KC_DLR, _,    ____,
+            KC_TRNS,_, KC_LCBR, KC_RCBR, KC_DLR, KC_PERC, KC_CIRC, KC_EQL,  KC_UNDS, KC_PLUS, KC_MINS, KC_ASTR, ____, KC_PGUP, ____,
             KC_TRNS, KC_TRNS, KC_TRNS,                 KC_TRNS,                               ____, ____, KC_HOME, KC_PGDN, KC_END
             ),
     [MOD2] = LAYOUT_all(
@@ -102,11 +67,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TRNS, KC_TRNS, KC_TRNS,              KC_SPC,                                    ____, ____, KC_HOME, KC_PGDN, KC_END
             ),
     [FKEYS] = LAYOUT_all(
-            ____,  KC_F1,   KC_F2,  KC_F3,    KC_F4,  KC_F5,   KC_F6,   KC_F7,   KC_F8,    KC_F9,   KC_F10, KC_F11, KC_F12,  ____,    ____,
-            KC_ASTG,KC_F13, KC_F14, KC_F15,   KC_F16, KC_F17,  KC_F18,  KC_F19,  KC_F20,   KC_F21,  KC_F22, KC_F23, KC_F24,  ____,
-            ____,  MACRO_0, MACRO_1,MACRO_2, MACRO_3, MACRO_4, MACRO_5, ____,    ____,     ____,    ____,   ____,   ____,    ____,
-            RESET,_, ____,   ____,     ____,   RGB_MOD, RGB_TOG, RGB_VAD, RGB_VAI,  BL_TOGG, BL_DEC, BL_INC, KC_MUTE, KC_VOLU, KC_MPLY,
-            ____,  ____,    ____,   TG(GAME), ____,   KC_TRNS, KC_MPRV, KC_VOLD, KC_MNXT
+            ____,    KC_F1,  KC_F2,  KC_F3,    KC_F4,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11, KC_F12,  ____,    ____,
+            KC_ASTG, KC_F13, KC_F14, KC_F15,   KC_F16, KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22, KC_F23, KC_F24,  ____,
+            ____,    ____,   ____,   ____,     ____,   ____,    ____,    ____,    ____,    ____,    ____,   ____,   ____,    ____,
+            RESET,   _,      ____,   ____,     ____,   RGB_MOD, RGB_TOG, RGB_VAD, RGB_VAI, BL_TOGG, BL_DEC, BL_INC, KC_MUTE, KC_VOLU, KC_MPLY,
+            ____,    ____,   ____,   TG(GAME), ____,   KC_TRNS, KC_MPRV, KC_VOLD, KC_MNXT
             ),
     [NUMPAD] = LAYOUT_all(
             KC_NLCK, KC_PSLS, KC_ASTR, KC_PEQL,     ____,       ____,    ____,       ____,       ____,     ____,    ____,       ____,   ____,    KC_BSPC, ____,
