@@ -21,9 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x6465
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    none
-#define PRODUCT         onekey
-#define DESCRIPTION     test board for qmk
+#define MANUFACTURER    dimas
+#define PRODUCT         black40
+#define DESCRIPTION     4x12 handwired ortho
 
 /* key matrix size */
 #define MATRIX_ROWS 1
