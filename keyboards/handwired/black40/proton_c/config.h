@@ -18,14 +18,15 @@
 
 #include "config_common.h"
 
-#define MATRIX_COL_PINS { B0 }
-#define MATRIX_ROW_PINS { A7 }
+#define MATRIX_COL_PINS { A2 }
+#define MATRIX_ROW_PINS { A1 }
 #define UNUSED_PINS
 
-#define BACKLIGHT_PIN           A0
-#define BACKLIGHT_PWM_DRIVER    PWMD2
-#define BACKLIGHT_PWM_CHANNEL   1
+#define BACKLIGHT_PIN           B8
+#define BACKLIGHT_PWM_DRIVER    PWMD4
+#define BACKLIGHT_PWM_CHANNEL   3
+#define BACKLIGHT_PAL_MODE      2
 
-#define RGB_DI_PIN A1
+#define RGB_DI_PIN A0
 
 #define ADC_PIN A0
