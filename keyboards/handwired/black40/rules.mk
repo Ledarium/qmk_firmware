@@ -20,6 +20,7 @@ FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 HD44780_ENABLE = no         # Enable support for HD44780 based LCDs (+400)
 
 AUTO_SHIFT_ENABLE = no      # Until we found a solution
+KEY_LOCK_ENABLE = no
 
 DEFAULT_FOLDER = handwired/black40/blackpill_f411
 LAYOUTS = ortho_4x12
