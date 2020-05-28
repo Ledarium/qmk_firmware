@@ -25,7 +25,8 @@
 /* encoder */
 #define ENCODERS_PAD_A { A8 }
 #define ENCODERS_PAD_B { B15 }
-#define ENCODER_RESOLUTION 3
+#define ENCODER_RESOLUTION 4
+#define TAP_CODE_DELAY 20
 
 /*
 #define BACKLIGHT_PIN           A0

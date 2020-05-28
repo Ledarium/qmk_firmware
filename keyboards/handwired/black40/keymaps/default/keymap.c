@@ -37,13 +37,21 @@ enum {
     LCTL_BS = MT(MOD_LCTL, KC_BSPC)
 };
 
+#ifdef ENCODER_ENABLE
 void encoder_update_user(uint8_t index, bool clockwise) {
-    if (clockwise) {
-        tap_code(KC_PGDN);
-    } else {
-        tap_code(KC_PGUP);
+    switch (biton32(layer_state)) {
+        case MOD1:
+            clockwise ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
+            break;
+        case MOD2:
+            clockwise ? tap_code(KC_MPRV) : tap_code(KC_MNXT);
+            break;
+        default:
+            clockwise ? tap_code(KC_PGDN) : tap_code(KC_PGUP);
+            break;
     }
 }
+#endif // ENCODER_ENABLE
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -73,6 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   (  |   {  |   }  |   $  |   %  |   ^  |   =  |   _  |   +  |   .  |   *  |   )  |
  * |-----------------------------------------------------------------------------------|
+ * |      |      |      |      | xxxx |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 
