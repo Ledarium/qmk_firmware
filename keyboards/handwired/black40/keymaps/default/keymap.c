@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include <print.h>
 
 #define _ KC_NO
 #define ____ KC_NO
@@ -22,15 +21,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 };
-
-void keyboard_post_init_user(void) {
-  // Customise these values to desired behaviour
-  debug_enable=true;
-  debug_matrix=true;
-  debug_keyboard=true;
-  //debug_mouse=true;
-  print("string2");
-}
 
 enum {
     DEFAULT = 0,
