@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include <print.h>
 
 #define _ KC_NO
 #define ____ KC_NO
@@ -6,8 +7,9 @@
 
 // Macro Declarations
 enum {
-    MACRO_1_8 = SAFE_RANGE+100,
+    MACRO_1_8 = SAFE_RANGE+1000,
 };
+
 // Macro Definitions
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
@@ -21,9 +23,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 };
 
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=true;
+  debug_matrix=true;
+  debug_keyboard=true;
+  //debug_mouse=true;
+  print("string2");
+}
+
 enum {
     DEFAULT = 0,
-    GAME,
     MOD1,
     MOD2,
     MOD3,
@@ -37,6 +47,14 @@ enum {
     LCTL_BS = MT(MOD_LCTL, KC_BSPC)
 };
 
+void encoder_update_user(uint8_t index, bool clockwise) {
+    if (clockwise) {
+        tap_code(KC_PGDN);
+    } else {
+        tap_code(KC_PGUP);
+    }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Default
@@ -45,35 +63,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |  ]   |
+ * |Shift(|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift)|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Ctrl/↼|  GUI | Alt  |      |Esc/M2|   Space/M1  | Enter| EN(*)| RU(+)|      |  Del |
+ * |Ctrl/↼|  GUI | Alt  |  Del |Esc/M2|   Space/M1  |Ent/M3| EN(*)|      |   \  |      |
  * `-----------------------------------------------------------------------------------'
  */
 [DEFAULT] = LAYOUT(
     KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
     KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
-    LCTL_BS, KC_LGUI, KC_DEL,  KC_LALT, ESC_MOD, SPC_MOD, ____,    ENT_MOD, KC_PAST, KC_PPLS, KC_BSLS, KC_RBRC
+    LCTL_BS, KC_LGUI, KC_DEL,  KC_LALT, ESC_MOD, SPC_MOD, ____,    ENT_MOD, KC_PAST, KC_RBRC, KC_BSLS, KC_DEL
 ),
 
 /* MOD1
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  1-8 |
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |   ]  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   -  |   [  |   ]  |   @  |   #  |   &  |   !  |   🠜  |   🠟  |   🠝  |   🠞  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   (  |   {  |   }  |   $  |   %  |   ^  |   =  |   _  |   +  |   .  |   *  |   )  |
  * |-----------------------------------------------------------------------------------|
- * | xxxx |   🔉 |   🔊 |   🔇 |   ■  |   xxxxxxx   |   ⏮  |   ►  |   ⏭  | Mail | Home |
  * `-----------------------------------------------------------------------------------'
  */
 
 [MOD1] = LAYOUT(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    MACRO_1_8,
-    KC_MINS, KC_LBRC, KC_RBRC, KC_AT,   KC_HASH, KC_AMPR, KC_EXLM, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ____,
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RBRC,
+    KC_MINS, KC_LBRC, KC_RBRC, KC_AT,   KC_HASH, KC_AMPR, KC_EXLM, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MACRO_1_8,
     KC_LPRN, KC_LCBR, KC_RCBR, KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,  KC_UNDS, KC_PLUS, xxxx,    KC_ASTR, KC_RPRN,
-    xxxx,    KC_VOLD, KC_VOLU, KC_MUTE, KC_MSTP, xxxx,    xxxx,    KC_MPRV, KC_MPLY, KC_MNXT, KC_MAIL, KC_WHOM
+    xxxx,    KC_LGUI, ____,    ____,    ____,    xxxx,    xxxx,    ____,    ____,    ____,    ____,    KC_MUTE
 ),
 
 /* MOD2
@@ -92,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F1,     KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8,   KC_F9,   KC_F10,  KC_F11, KC_F12,
     A(KC_TAB), ____,  ____,  ____,  ____,  ____,  ____,  KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_PAUS,
     KC_PSCR,   ____,  ____,  ____,  ____,  ____,  ____,  ____,    ____,    ____,    ____,   ____,
-    ____,      ____,  RESET, ____,  xxxx,  ____,  ____,  ____,    ____,    ____,    ____,   ____
+    ____,      ____,  RESET, ____,  xxxx,  ____,  ____,  ____,    ____,    ____,    ____,   KC_MPLY
 ),
 
 /* MOD2
@@ -132,3 +149,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_PENT, KC_P1,   KC_P2,   KC_P3,   KC_PDOT, ____,    ____,    ____,    ____,    ____,    ____,    ____
 )
 };
+

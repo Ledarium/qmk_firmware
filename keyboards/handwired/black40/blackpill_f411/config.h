@@ -22,6 +22,11 @@
 #define MATRIX_ROW_PINS { A3, A2, A1, A0 }
 #define UNUSED_PINS
 
+/* encoder */
+#define ENCODERS_PAD_A { A8 }
+#define ENCODERS_PAD_B { B15 }
+#define ENCODER_RESOLUTION 3
+
 /*
 #define BACKLIGHT_PIN           A0
 #define BACKLIGHT_PWM_DRIVER    PWMD2
