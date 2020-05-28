@@ -26,13 +26,14 @@ enum {
     GAME,
     MOD1,
     MOD2,
-    FKEYS,
+    MOD3,
     NUMPAD
 };
 
 enum {
-    ESC_MOD = LT(MOD2,KC_ESC),
-    SPC_MOD = LT(MOD1,KC_SPC),
+    SPC_MOD = LT(MOD1, KC_SPC),
+    ESC_MOD = LT(MOD2, KC_ESC),
+    ENT_MOD = LT(MOD3, KC_ENT),
     LCTL_BS = MT(MOD_LCTL, KC_BSPC)
 };
 
@@ -53,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
     KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
-    LCTL_BS, KC_LGUI, KC_DEL,  KC_LALT, ESC_MOD, SPC_MOD, ____,    KC_ENT,  KC_PAST, KC_PPLS, KC_BSLS, KC_RBRC
+    LCTL_BS, KC_LGUI, KC_DEL,  KC_LALT, ESC_MOD, SPC_MOD, ____,    ENT_MOD, KC_PAST, KC_PPLS, KC_BSLS, KC_RBRC
 ),
 
 /* MOD1
@@ -92,6 +93,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ____,    ____,  ____,  ____,  ____,  ____,  ____,  KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_PAUS,
     KC_PSCR, ____,  ____,  ____,  ____,  ____,  ____,  ____,    ____,    ____,    ____,   ____,
     ____,    ____,  RESET, ____,  xxxx,  ____,  ____,  ____,    ____,    ____,    ____,   ____
+),
+
+/* MOD2
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |-----------------------------------------------------------------------------------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |-----------------------------------------------------------------------------------|
+ * |      |      |      |      |      |             | xxxx |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+
+[MOD3] = LAYOUT(
+    ____,    G(KC_1), G(KC_2), G(KC_3), G(KC_4), ____, ____, ____,         ____, ____, ____,      ____,
+    ____,    ____,    ____,    ____,    ____,    ____, ____, A(S(KC_TAB)), ____, ____, A(KC_TAB), ____,
+    ____,    ____,    ____,    ____,    ____,    ____, ____, C(S(KC_TAB)), ____, ____, C(KC_TAB), ____,
+    LCTL_BS, ____,    ____,    ____,    ____,    ____, ____, xxxx,         ____, ____, ____,      ____
 ),
 
 /* Numpad
