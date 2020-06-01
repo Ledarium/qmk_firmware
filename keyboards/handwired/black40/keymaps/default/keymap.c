@@ -5,21 +5,8 @@
 #define xxxx KC_TRNS
 
 // Macro Declarations
-enum {
-    MACRO_1_8 = SAFE_RANGE+1000,
-};
-
-// Macro Definitions
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch(keycode) {
-    case MACRO_1_8: {
-        if (record->event.pressed) {
-            SEND_STRING("12345678");
-        }
-        break;
-    }
-  }
-  return true;
+enum my_keycodes {
+    MACRO_1_8 = SAFE_RANGE,
 };
 
 enum {
@@ -35,6 +22,26 @@ enum {
     ESC_MOD = LT(MOD2, KC_ESC),
     ENT_MOD = LT(MOD3, KC_ENT),
     LCTL_BS = MT(MOD_LCTL, KC_BSPC)
+};
+
+// Macro Definitions
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch(keycode) {
+    case MACRO_1_8: {
+        if (record->event.pressed) {
+            SEND_STRING("12345678");
+        }
+        break;
+    }
+    case ESC_MOD: {
+      if (record->event.pressed) {
+        tap_code16(C(KC_1));
+      }
+      break;
+    }
+    default: return true;
+  }
+  return true;
 };
 
 #ifdef ENCODER_ENABLE
@@ -66,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
     KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
-    LCTL_BS, KC_LGUI, KC_DEL,  KC_LALT, ESC_MOD, SPC_MOD, ____,    ENT_MOD, KC_PAST, KC_RBRC, KC_BSLS, KC_RCTL
+    LCTL_BS, KC_LGUI, KC_DEL,  KC_LALT, ESC_MOD, SPC_MOD, ____,    ENT_MOD, C(KC_2), KC_RBRC, KC_BSLS, KC_RCTL
 ),
 
 [MOD1] = LAYOUT(
