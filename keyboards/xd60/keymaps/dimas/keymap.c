@@ -54,15 +54,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
     [MOD1] = LAYOUT_all(
             KC_GRV, KC_F1,  KC_F2,  KC_F3,    KC_F4,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11, KC_F12,  ____, ____,
-            KC_DOT, KC_1,   KC_2,    KC_3,    KC_4,    KC_5,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,      ____, ____, MACRO_1_8,
+            KC_MINS, KC_1,   KC_2,    KC_3,    KC_4,    KC_5,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,      ____, ____, MACRO_1_8,
             KC_BSPC,  KC_LBRC, KC_RBRC, KC_AT,  KC_HASH, KC_AMPR, KC_EXLM, KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,  KC_DLR, _,    ____,
-            KC_TRNS,_, KC_LCBR, KC_RCBR, KC_DLR, KC_PERC, KC_CIRC, KC_EQL,  KC_UNDS, KC_PLUS, KC_MINS, KC_ASTR, ____, KC_PGUP, ____,
+            KC_TRNS,_, KC_LCBR, KC_RCBR, KC_DLR, KC_PERC, KC_CIRC, KC_EQL,  KC_UNDS, KC_PLUS, KC_DOT, KC_ASTR, ____, KC_PGUP, ____,
             KC_TRNS, KC_TRNS, KC_TRNS,                 KC_TRNS,                               ____, ____, KC_HOME, KC_PGDN, KC_END
             ),
     [MOD2] = LAYOUT_all(
             ____,    ____,    KC_F2,    LALT(KC_F4), KC_END,     ____, ____,    ____,    ____,    ____,   KC_HOME, ____, ____, ____,    KC_PAUS,
-            KC_ESC,  ____,    ____,    ____,        ____,       ____, ____,    ____,    ____,    ____,    ____,    ____, ____, ____,
-            KC_TRNS, KC_PAST, KC_PPLS, LCTL(KC_X),  LCTL(KC_F), ____, ____, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  ____,    _,    ____,
+            KC_GRV, KC_F1,  KC_F2,  KC_F3,    KC_F4,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11, KC_F12,  ____,
+            KC_TRNS, C(KC_1), C(KC_2), LCTL(KC_X),  LCTL(KC_F), ____, ____, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  ____,    _,    ____,
             KC_TRNS, _,    ____, ____,     ____,    ____,    ____,    ____,    ____,  ____,      ____,    ____, ____, KC_PGUP, ____,
             KC_TRNS, KC_TRNS, KC_TRNS,              KC_SPC,                                      ____, ____, KC_HOME, KC_PGDN, KC_END
             ),
@@ -90,7 +90,7 @@ void keyboard_post_init_user() {
 
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
-    autoshift_disable();
+    //autoshift_disable();
 
     switch (layer) {
         case MOD1:
@@ -119,7 +119,7 @@ uint32_t layer_state_set_user(uint32_t state) {
             break;
 
         default:
-            autoshift_enable();
+     //       autoshift_enable();
             rgblight_mode_noeeprom(DEFAULT_RGB_MODE);
             break;
     }
