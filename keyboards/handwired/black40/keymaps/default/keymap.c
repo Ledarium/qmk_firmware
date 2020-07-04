@@ -39,6 +39,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
     }
+    case KC_LALT: {
+      if (record->event.pressed) {
+        tap_code16(C(KC_1));
+      }
+      break;
+    }
     default: return true;
   }
   return true;

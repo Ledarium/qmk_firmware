@@ -18,8 +18,8 @@
 
 #include "config_common.h"
 
-#define MATRIX_COL_PINS { B8, B9, B7, B6, A4, A5, A6, A7, B0, C14, B1, B10 }
-#define MATRIX_ROW_PINS { A3, A2, A1, A0 }
+#define MATRIX_COL_PINS { A0, A1, A2, A3, A4, A5, A6, A7, B0, B1, C14, B10 }
+#define MATRIX_ROW_PINS { B6, B7, B8, B9 }
 #define UNUSED_PINS
 
 /* encoder */
