@@ -101,7 +101,7 @@ xxxx,    ____,  RESET, ____,  xxxx,  ____,  ____,  ____,    ____,    ____,    __
 ____,    G(KC_1), G(KC_2), G(KC_3), G(KC_4), ____,   ____,    ____,         ____, ____, ____,      ____,
 ____,    ____,    ____,    ____,    ____,    ____,   ____,    A(S(KC_TAB)), ____, ____, A(KC_TAB), ____,
 ____,    ____,    ____,    ____,    ____,    ____,   ____,    C(S(KC_TAB)), ____, ____, C(KC_TAB), ____,
-xxxx,    ____,    ____,    ____,    ____,        ____, _,     xxxx,         TG(GAME), ____, ____,      KC_MUTE
+xxxx,    ____,    ____,    ____,    ____,        ____, _,     xxxx,      KC_MUTE, ____, ____,      TG(GAME)
 ),
 
 [NUMPAD] = LAYOUT(
@@ -112,10 +112,10 @@ KC_PENT, KC_P1,   KC_P2,   KC_P3,   KC_PDOT, ____,    ____,    ____,    ____,   
 ),
 
 [GAME] = LAYOUT(
-KC_GRV,  KC_3,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-KC_TAB,  KC_4,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
-KC_1,    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-KC_2,    KC_LCTL, KC_DEL,  KC_LALT, KC_ESC,    KC_SPC, _,      KC_ENT,  TG(GAME), KC_RBRC, KC_BSLS, KC_RCTL
+KC_4,  KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+KC_3,  KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
+KC_2,  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  ESC_M2,
+KC_1,  KC_LCTL, KC_DEL,  KC_LALT, KC_ESC,    KC_SPC, _,      KC_ENT,  KC_RCTL, KC_RBRC, KC_BSLS, TG(GAME)
 )
 };
 
