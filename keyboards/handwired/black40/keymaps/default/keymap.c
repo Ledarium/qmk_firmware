@@ -93,7 +93,7 @@ xxxx,    KC_LGUI, ____,    xxxx,    ____,    xxxx,    xxxx,    ____,    C(KC_1),
 [MOD2] = LAYOUT(
 KC_F12,  KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
 ____,    ____,  ____,  ____,  ____,  ____,  ____,  KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_PAUS,
-KC_PSCR, ____,  ____,  ____,  ____,  ____,  ____,  ____,    ____,    ____,    ____,   ____,
+KC_PSCR, ____,  ____,  ____,  ____,  ____,  ____,  ____,    ____,    ____,    ____,   xxxx,
 xxxx,    ____,  RESET, ____,  xxxx,  ____,  ____,  ____,    ____,    ____,    ____,   KC_RCTL
 ),
 
